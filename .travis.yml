@@ -6,6 +6,7 @@ env:
   - TRAVIS_TAG=repository
 
 install:
+  - export TRAVIS_REPO_SLUG=$(echo "$TRAVIS_REPO_SLUG" | awk '{print tolower($0)}')
   - cat dockerfile | envsubst | docker build -t $TRAVIS_REPO_SLUG -
   - docker run -d -t -v $(pwd)/pkguser:/home/pkguser --name aurci $TRAVIS_REPO_SLUG bash
 

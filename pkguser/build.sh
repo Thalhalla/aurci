@@ -31,7 +31,7 @@ done
 shopt -u nullglob
 
 if (( ${#pkgnames[@]} )); then
-    aur sync -d "${TRAVIS_REPO_SLUG#*/}" -n ${pkgnames[@]}
+    aur sync -d "${TRAVIS_REPO_SLUG#*/}" --noconfirm --noview ${pkgnames[@]}
 fi
 
 shopt -s nullglob
